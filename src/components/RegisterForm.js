@@ -1,12 +1,22 @@
 import React from "react";
 
 const RegisterForm = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.username.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, photoURL, email, password);
+  };
   return (
     <div>
       <div>
-        <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
+        <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-900">
           <h1 className="text-2xl font-bold text-center">Register</h1>
           <form
+            onSubmit={handleSubmit}
             novalidate=""
             action=""
             className="space-y-6 ng-untouched ng-pristine ng-valid"
@@ -21,6 +31,7 @@ const RegisterForm = () => {
                 id="username"
                 placeholder="Username"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+                required
               />
             </div>
             <div className="space-y-1 text-sm">
@@ -29,10 +40,11 @@ const RegisterForm = () => {
               </label>
               <input
                 type="text"
-                name="username"
+                name="photoURL"
                 id="Photo Url"
                 placeholder="Photo Url"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+                required
               />
             </div>
             <div className="space-y-1 text-sm">
@@ -40,11 +52,12 @@ const RegisterForm = () => {
                 Email
               </label>
               <input
-                type="text"
-                name="username"
-                id="username"
-                placeholder="Username"
+                type="email"
+                name="email"
+                id="email"
+                placeholder="email"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+                required
               />
             </div>
             <div className="space-y-1 text-sm">
@@ -57,6 +70,7 @@ const RegisterForm = () => {
                 id="password"
                 placeholder="Password"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+                required
               />
             </div>
             <div className="flex justify-center">

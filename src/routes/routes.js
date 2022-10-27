@@ -6,6 +6,7 @@ import Courses from "../components/Courses";
 import Blog from "../components/Blog";
 import Login from "../components/Login";
 import ErrorPage from "../components/ErrorPage";
+import CourseCard from "../components/CourseCard";
 
 const routes = createBrowserRouter([
   {
@@ -22,6 +23,24 @@ const routes = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses />,
+        loader: () =>
+          fetch("https://mern-development-server.vercel.app/courses"),
+      },
+      {
+        path: "/category/:id",
+        element: <Courses />,
+        loader: ({ params }) =>
+          fetch(
+            `https://mern-development-server.vercel.app/category/${params.id}`
+          ),
+      },
+      {
+        path: "/course/:id",
+        element: <CourseCard />,
+        loader: ({ params }) =>
+          fetch(
+            `https://mern-development-server.vercel.app/course/${params.id}`
+          ),
       },
       {
         path: "/faq",

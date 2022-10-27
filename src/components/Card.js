@@ -1,19 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Card = ({ data }) => {
-  const { title, total_view, details, image_url } = data;
+  const { title, author, total_view, details, image_url } = data;
   return (
     <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
-      <a href="/" aria-label="Article">
+      <Link to="/courses" aria-label="Article">
         <img
           src={image_url}
           className="object-cover w-full h-64 rounded"
           alt=""
         />
-      </a>
+      </Link>
       <div className="py-5 text-left">
         <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-          13 Jul 2020
+          {author.name}
         </p>
         <a
           href="/"
@@ -54,7 +55,7 @@ const Card = ({ data }) => {
                 />
               </svg>
             </div>
-            <p className="font-semibold">7.4K</p>
+            <p className="font-semibold">{total_view}K</p>
           </a>
           <a
             href="/"
