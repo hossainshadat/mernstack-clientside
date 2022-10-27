@@ -39,9 +39,14 @@ const LoginForm = () => {
               </a>
             </div>
           </div>
-          <button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400">
-            Sign in
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="button"
+              class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              Sign In
+            </button>
+          </div>
         </form>
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>

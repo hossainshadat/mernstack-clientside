@@ -24,6 +24,18 @@ const RegisterForm = () => {
               />
             </div>
             <div className="space-y-1 text-sm">
+              <label htmlFor="Photo Url" className="block dark:text-gray-400">
+                Photo Url
+              </label>
+              <input
+                type="text"
+                name="username"
+                id="Photo Url"
+                placeholder="Photo Url"
+                className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+              />
+            </div>
+            <div className="space-y-1 text-sm">
               <label htmlFor="email" className="block dark:text-gray-400">
                 Email
               </label>
@@ -46,22 +58,18 @@ const RegisterForm = () => {
                 placeholder="Password"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
               />
-              <div className="flex justify-end text-xs dark:text-gray-400">
-                <a rel="noopener noreferrer" href="#">
-                  Forgot Password?
-                </a>
-              </div>
             </div>
-            <a
-              href="/"
-              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-            ></a>
+            <div className="flex justify-center">
+              <button
+                type="Submit"
+                class="w-full  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              >
+                Register
+              </button>
+            </div>
           </form>
           <div className="flex items-center pt-4 space-x-1">
             <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-            <p className="px-3 text-sm dark:text-gray-400">
-              Login with social accounts
-            </p>
             <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
           </div>
           <p className="text-xs text-center sm:px-6 dark:text-gray-400">
