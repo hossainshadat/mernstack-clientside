@@ -1,12 +1,15 @@
 import React from "react";
+import { useLoaderData } from "react-router-dom";
 import Hero from "./Hero";
 import HomeContent from "./HomeContent";
 
 const Home = () => {
+  const coursesData = useLoaderData();
+  console.log(coursesData);
   return (
     <div>
       <Hero></Hero>
-      <HomeContent></HomeContent>
+      <HomeContent coursesData={coursesData}></HomeContent>
     </div>
   );
 };

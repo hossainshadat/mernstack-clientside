@@ -35,8 +35,10 @@ const Hero = () => {
               Development
             </h2>
             <p className="text-base text-gray-700 md:text-lg">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque rem aperiam, eaque ipsa quae.
+              MERN stack is a collection of technologies that enables faster
+              application development. It is used by developers worldwide. The
+              main purpose of using MERN stack is to develop apps using
+              JavaScript only
             </p>
           </div>
         </div>

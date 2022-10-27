@@ -16,6 +16,8 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () =>
+          fetch("https://mern-development-server.vercel.app/courses"),
       },
       {
         path: "/courses",
