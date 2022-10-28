@@ -7,6 +7,7 @@ import Blog from "../components/Blog";
 import ErrorPage from "../components/ErrorPage";
 import Login from "./../components/Login";
 import CourseDetail from "../components/CourseDetail";
+import PrivateRoute from "./PrivateRoutes";
 
 const routes = createBrowserRouter([
   {
@@ -36,7 +37,11 @@ const routes = createBrowserRouter([
       },
       {
         path: "/course/:id",
-        element: <CourseDetail />,
+        element: (
+          <PrivateRoute>
+            <CourseDetail />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://mern-development-server.vercel.app/course/${params.id}`
