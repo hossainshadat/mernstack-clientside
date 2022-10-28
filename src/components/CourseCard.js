@@ -1,10 +1,10 @@
 import React from "react";
 
-const CourseCard = ({ singleItem }) => {
-  console.log(singleItem);
+const CourseCard = ({ data }) => {
+  console.log(data);
   return (
-    <div className="flex justify-center">
-      <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-900 dark:text-gray-100">
+    <div className="flex justify-center mb-4">
+      <div className="flex flex-col p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-gray-900 text-gray-100">
         <div className="flex space-x-4">
           <img
             alt=""
@@ -17,25 +17,21 @@ const CourseCard = ({ singleItem }) => {
               href="#"
               className="text-sm font-semibold"
             >
-              Leroy Jenkins
+              {data?.author?.name}
             </a>
-            <span className="text-xs dark:text-gray-400">4 hours ago</span>
+            <span className="text-xs dark:text-gray-400">
+              {data?.author?.published_date}
+            </span>
           </div>
         </div>
         <div>
           <img
-            src="https://source.unsplash.com/random/100x100/?5"
+            src={data?.image_url}
             alt=""
             className="object-cover w-full mb-4 h-60 sm:h-96 dark:bg-gray-500"
           />
-          <h2 className="mb-1 text-xl font-semibold">
-            Nam cu platonem posidonium sanctus debitis te
-          </h2>
-          <p className="text-sm dark:text-gray-400">
-            Eu qualisque aliquando mel, id lorem detraxit nec, ad elit minimum
-            pri. Illum ipsum detracto ne cum. Mundi nemore te ius, vim ad illud
-            atqui apeirian...
-          </p>
+          <h2 className="mb-1 text-xl font-semibold">{data?.title}</h2>
+          <p className="text-sm dark:text-gray-400">{data?.details}</p>
         </div>
         <div className="flex flex-wrap justify-between">
           <div className="space-x-2">

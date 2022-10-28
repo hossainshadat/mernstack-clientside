@@ -1,7 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
-import Card from "./Card";
 import Sidebar from "./Sidebar";
+import CourseCard from './CourseCard';
 
 const Courses = () => {
   const coursesData = useLoaderData();
@@ -25,7 +25,7 @@ const Courses = () => {
       </div>
       <div className="col-span-2">
         {coursesData.map((data) => (
-          <Card key={data._id} data={data} />
+          <CourseCard key={data._id} data={data} />
         ))}
       </div>
     </div>
