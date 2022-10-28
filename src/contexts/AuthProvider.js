@@ -15,10 +15,12 @@ import {
 import app from "./../firebase/firebase.init";
 import { useEffect } from "react";
 import { useState } from "react";
+import { GithubAuthProvider } from "firebase/auth";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
@@ -65,9 +67,13 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
-  const resetPassword =(email)=>{
-    return sendPasswordResetEmail(auth,email)
-  }
+  const githubSignIn = () => {
+    return signInWithPopup(auth, githubProvider);
+  };
+
+  const resetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
 
   const authInfo = {
     createUser,
@@ -78,7 +84,8 @@ const AuthProvider = ({ children }) => {
     vrifiedEmail,
     loading,
     googleSignIn,
-    resetPassword
+    resetPassword,
+    githubSignIn,
   };
 
   return (
