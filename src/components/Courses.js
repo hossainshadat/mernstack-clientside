@@ -9,7 +9,7 @@ const Courses = () => {
   return (
     <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 grid  md:grid-flow-col gap-4">
       <div className="md:row-span-3">
-        <aside className="w-full p-6 sm:w-60 bg-gray-900 text-gray-100">
+        <aside className="w-full p-6 md:w-60 bg-gray-900 text-gray-100">
           <nav className="space-y-8 text-sm">
             <div className="space-y-2">
               <h2 className="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">
