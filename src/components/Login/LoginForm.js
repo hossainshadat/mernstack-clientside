@@ -8,6 +8,7 @@ const LoginForm = () => {
   const { SignIn, googleSignIn, resetPassword, githubSignIn } =
     useContext(AuthContext);
   const [userEmail, setUserEmail] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -18,17 +19,16 @@ const LoginForm = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
 
     SignIn(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         navigate(from, { replace: true });
-        console.log(user);
+
         form.reset();
       })
       .catch((error) => {
-        console.error(error.message);
+        setError(error.message);
       });
   };
 
@@ -49,17 +49,19 @@ const LoginForm = () => {
 
   //Reset Pass
   const handleReset = () => {
-    resetPassword(userEmail)
-      .then(() => {
-        toast.success("Reset link has been sent, please check email");
-      })
-      .catch((error) => toast.error(error.message));
+    resetPassword(userEmail).then(() => {
+      toast.success("Reset link has been sent, please check email");
+    });
+    setError(error.message);
   };
 
   return (
     <div>
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-900">
         <h1 className="text-2xl font-bold text-center">Login</h1>
+        <p className="text-xs text-center sm:px-6 dark:text-gray-400">
+          {error}
+        </p>
         <form
           onSubmit={handleSubmit}
           action=""

@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 
 const RegisterForm = () => {
   const { createUser, vrifiedEmail, updateNamePhoto } = useContext(AuthContext);
-  console.log(createUser);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -120,7 +119,7 @@ const RegisterForm = () => {
               className=" dark:text-gray-100"
             >
               {" "}
-              Click Log In Button
+              Click Login Button
             </a>
           </p>
         </div>
