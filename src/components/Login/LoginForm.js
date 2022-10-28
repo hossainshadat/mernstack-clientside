@@ -50,7 +50,7 @@ const LoginForm = () => {
   //Reset Pass
   const handleReset = () => {
     resetPassword(userEmail).then(() => {
-      toast.success("Reset link has been sent, please check email");
+      console.log("Reset link has been sent, please check email");
     });
     setError(error.message);
   };
