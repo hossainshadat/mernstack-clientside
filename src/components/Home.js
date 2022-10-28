@@ -5,7 +5,7 @@ import HomeContent from "./HomeContent";
 
 const Home = () => {
   const coursesData = useLoaderData();
-  console.log(coursesData);
+
   return (
     <div>
       <Hero></Hero>

@@ -1,26 +1,47 @@
 import React from "react";
+import { useContext } from "react";
+import { toast } from "react-toastify";
+import { AuthContext } from "./../../contexts/AuthProvider";
 
 const LoginForm = () => {
-  const handleSubmit = () => {};
+  const { SignIn } = useContext(AuthContext);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    SignIn(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        toast.success("Login Successfully YaY.");
+        form.reset();
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
   return (
     <div>
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-900">
         <h1 className="text-2xl font-bold text-center">Login</h1>
         <form
           onSubmit={handleSubmit}
-          noValidate=""
           action=""
           className="space-y-6 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-1 text-sm">
-            <label htmlFor="username" className="block dark:text-gray-400">
-              Username
+            <label htmlFor="email" className="block dark:text-gray-400">
+              Email
             </label>
             <input
-              type="text"
-              name="username"
-              id="username"
-              placeholder="Username"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="email"
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-dark-100 focus:dark:border-violet-400"
             />
           </div>

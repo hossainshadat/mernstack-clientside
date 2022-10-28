@@ -1,6 +1,12 @@
 import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "./../../contexts/AuthProvider";
+import { toast } from "react-toastify";
 
 const RegisterForm = () => {
+  const { createUser, updateNamePhoto } = useContext(AuthContext);
+  console.log(createUser);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -8,8 +14,21 @@ const RegisterForm = () => {
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photoURL, email, password);
+
+    // Create Acc
+    createUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+
+        updateNamePhoto(name, photoURL).then(() => {
+          toast.success("Name and Photo Updated");
+        });
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
+
   return (
     <div>
       <div>
@@ -17,7 +36,6 @@ const RegisterForm = () => {
           <h1 className="text-2xl font-bold text-center">Register</h1>
           <form
             onSubmit={handleSubmit}
-            novalidate=""
             action=""
             className="space-y-6 ng-untouched ng-pristine ng-valid"
           >
@@ -76,7 +94,7 @@ const RegisterForm = () => {
             <div className="flex justify-center">
               <button
                 type="Submit"
-                class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
                 Register
               </button>

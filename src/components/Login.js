@@ -1,7 +1,6 @@
 import React from "react";
-import LoginForm from "./LoginForm";
-import RegisterForm from "./RegisterForm";
-
+import RegisterForm from "./Login/RegisterForm";
+import LoginForm from "./Login/LoginForm";
 import {
   Tabs,
   TabsHeader,

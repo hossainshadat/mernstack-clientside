@@ -4,9 +4,9 @@ import Home from "./../components/Home";
 import Faq from "../components/Faq";
 import Courses from "../components/Courses";
 import Blog from "../components/Blog";
-import Login from "../components/Login";
 import ErrorPage from "../components/ErrorPage";
 import CourseCard from "../components/CourseCard";
+import Login from "./../components/Login";
 
 const routes = createBrowserRouter([
   {
