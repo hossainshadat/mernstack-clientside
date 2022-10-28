@@ -5,8 +5,8 @@ import Faq from "../components/Faq";
 import Courses from "../components/Courses";
 import Blog from "../components/Blog";
 import ErrorPage from "../components/ErrorPage";
-import CourseCard from "../components/CourseCard";
 import Login from "./../components/Login";
+import CourseDetail from "../components/CourseDetail";
 
 const routes = createBrowserRouter([
   {
@@ -36,7 +36,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/course/:id",
-        element: <CourseCard />,
+        element: <CourseDetail />,
         loader: ({ params }) =>
           fetch(
             `https://mern-development-server.vercel.app/course/${params.id}`
