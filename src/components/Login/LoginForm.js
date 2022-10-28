@@ -16,11 +16,10 @@ const LoginForm = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-        toast.success("Login Successfully YaY.");
         form.reset();
       })
       .catch((error) => {
-        toast.error(error.message);
+        console.error(error.message);
       });
   };
 

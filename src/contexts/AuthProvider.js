@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -27,7 +28,11 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = () => {
-    signOut(auth);
+    return signOut(auth);
+  };
+
+  const vrifiedEmail = () => {
+    return sendEmailVerification(auth.currentUser);
   };
 
   const updateNamePhoto = (displayName, photoURL) => {
@@ -49,9 +54,10 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     createUser,
     SignIn,
-    signOut,
+    logOut,
     updateNamePhoto,
     user,
+    vrifiedEmail,
   };
 
   return (

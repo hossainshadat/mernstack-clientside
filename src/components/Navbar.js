@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "./../contexts/AuthProvider";
 
-export const Navbar = () => {
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => console.log("User Logged out"))
+      .catch((error) => console.error(error));
+  };
 
   return (
     <div className="bg-gray-900">
@@ -10,8 +19,8 @@ export const Navbar = () => {
         <div className="relative flex items-center justify-between">
           <Link
             to="/"
-            aria-label="Company"
-            title="Company"
+            aria-label="Mern Steps"
+            title="Mern Steps"
             className="inline-flex items-center"
           >
             <svg
@@ -65,33 +74,53 @@ export const Navbar = () => {
               </Link>
             </li>
             <li>
-              <a
-                href="/"
-                aria-label="About us"
-                title="About us"
-                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+              <label
+                for="Toggle1"
+                className="inline-flex items-center space-x-4 cursor-pointer text-gray-100"
               >
-                Toggle Theme
-              </a>
+                <span>Dark</span>
+                <span className="relative">
+                  <input id="Toggle1" type="checkbox" className="hidden peer" />
+                  <div className="w-10 h-6 rounded-full shadow-inner bg-gray-400 peer-checked:dark:bg-violet-400"></div>
+                  <div className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-gray-800"></div>
+                </span>
+                <span>Light</span>
+              </label>
             </li>
 
             <li>
-              <Link
-                to="/login"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                aria-label="Log in"
-                title="Log in"
-              >
-                Log in
-              </Link>
-              <a
-                href="/"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                aria-label="Sign up"
-                title="Sign up"
-              >
-                Sign Out
-              </a>
+              {user?.email ? (
+                <>
+                  <div className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none">
+                    <img
+                      aria-label={user?.displayName}
+                      title={user?.displayName}
+                      src={user?.photoURL}
+                      alt=""
+                      className="w-12 h-12 rounded-full dark:bg-gray-500"
+                    />
+                  </div>
+
+                  <button
+                    onClick={handleLogout}
+                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                    aria-label="Sign Out"
+                    title="Sign Out"
+                  >
+                    Sign Out
+                  </button>
+                </>
+              ) : (
+                <Link to="/login">
+                  <button
+                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                    aria-label="Log in"
+                    title="Log in"
+                  >
+                    Log in
+                  </button>
+                </Link>
+              )}
             </li>
           </ul>
           <div className="lg:hidden">

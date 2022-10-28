@@ -4,7 +4,7 @@ import { AuthContext } from "./../../contexts/AuthProvider";
 import { toast } from "react-toastify";
 
 const RegisterForm = () => {
-  const { createUser, updateNamePhoto } = useContext(AuthContext);
+  const { createUser, vrifiedEmail, updateNamePhoto } = useContext(AuthContext);
   console.log(createUser);
 
   const handleSubmit = (event) => {
@@ -20,8 +20,16 @@ const RegisterForm = () => {
       .then((userCredential) => {
         const user = userCredential.user;
 
+        // Update name photo
+        form.reset();
         updateNamePhoto(name, photoURL).then(() => {
-          toast.success("Name and Photo Updated");
+          console.log("Name and Photo Updated");
+          // Verify email
+          vrifiedEmail()
+            .then(() =>
+              console.log("Please check your email for verification link")
+            )
+            .catch((error) => console.error(error.message));
         });
       })
       .catch((error) => {
